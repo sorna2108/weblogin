@@ -77,7 +77,7 @@ const email=req.body.email;
 const password=req.body.password;
     const useremail = await Register.findOne({email:email});
     
-    const isMatch = bcrypt.compare(password, useremail.password);
+    const isMatch = await bcrypt.compare(password, useremail.password);
 
 const token=await useremail.generateAuthToken();
 console.log("The token part "+token);
